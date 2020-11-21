@@ -25,6 +25,6 @@ echo 'ACTION!="add", GOTO="my_usb_audio_end"' | sudo tee -a  /etc/udev/rules.d/7
 echo 'ATTRS{idVendor}=="1b3f", ATTRS{idProduct}=="2008", ATTR{id}="VOICE"' | sudo tee -a  /etc/udev/rules.d/70-alsa-permanent.rules
 ```
 My usb sound is the Generalplus Technology Inc. so 1b3f:2008 is used, just unplug and run lsusb once more to see if it dissapears if unsure.
-Now wehn you reboot we should have a loopback device and renamed 'VOICE' soundcard.
+Now when you reboot we should have a loopback device and renamed 'VOICE' soundcard.
 
 
