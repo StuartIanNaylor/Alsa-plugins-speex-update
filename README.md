@@ -27,4 +27,18 @@ echo 'ATTRS{idVendor}=="1b3f", ATTRS{idProduct}=="2008", ATTR{id}="VOICE"' | sud
 My usb sound is the Generalplus Technology Inc. so 1b3f:2008 is used, just unplug and run lsusb once more to see if it dissapears if unsure.
 Now when you reboot we should have a loopback device and renamed 'VOICE' soundcard.
 
+Another oneliner to save /etc/asound.conf
+
+`sudo curl -o /etc/asound.conf https://raw.githubusercontent.com/StuartIanNaylor/Alsa-plugins-speex-update/main/asound.conf`
+
+Then last thing is to start ec on login via the .profile script in your $HOME dir.
+
+```
+echo './ec/ec -i plughw:VOICE -o plughw:VOICE -d 20 &' >> .profile
+echo 'sleep 10' >> .profile
+echo 'arecord -Deco -r16000 -fS16_LE -c1 | aplay -Dplughw:CARD=Loopback,DEV=0 &' >> .profile
+```
+
+Now on reboot because the defaults are set aplay & arecord without need for setting a device should work
+
 
