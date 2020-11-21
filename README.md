@@ -19,6 +19,12 @@ Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp. SMSC9512/9514 Fast 
 Bus 001 Device 002: ID 0424:9514 Standard Microsystems Corp. SMC9514 Hub
 Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 ```
-
+```
+echo 'SUBSYSTEM!="sound", GOTO="my_usb_audio_end"' | sudo tee -a  /etc/udev/rules.d/70-alsa-permanent.rules
+echo 'ACTION!="add", GOTO="my_usb_audio_end"' | sudo tee -a  /etc/udev/rules.d/70-alsa-permanent.rules
+echo 'ATTRS{idVendor}=="1b3f", ATTRS{idProduct}=="2008", ATTR{id}="VOICE"' | sudo tee -a  /etc/udev/rules.d/70-alsa-permanent.rules
+```
+My usb sound is the Generalplus Technology Inc. so 1b3f:2008 is used, just unplug and run lsusb once more to see if it dissapears if unsure.
+Now wehn you reboot we should have a loopback device and renamed 'VOICE' soundcard.
 
 
