@@ -2,7 +2,9 @@
 
 To get the correct speex & speexdsp and then update alsa-plugins 32bit
 ```curl -sL https://raw.githubusercontent.com/StuartIanNaylor/Alsa-plugins-speex-update/main/Alsa-plugins-speex-update-32bit.sh  | sudo -E bash -```
+
 For 64bit
+
 ```curl -sL https://raw.githubusercontent.com/StuartIanNaylor/Alsa-plugins-speex-update/main/Alsa-plugins-speex-update-64bit.sh  | sudo -E bash -```
 
 To install ec & alsa_plugin_fifo
